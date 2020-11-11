@@ -4,13 +4,14 @@ math.sub(123,345);
 
 let http = require('http');
 const express = require('express'); 
+const bodyParser = require('body-parser');
 const app = express(); 
 const port = 8080; 
 
 var test = require('./router');
 
-// ...
-
+app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: true }))
 app.use('/test', test)
 //ROUTING
 
