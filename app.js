@@ -8,18 +8,19 @@ const bodyParser = require('body-parser');
 const app = express(); 
 const port = 8080; 
 
-var test = require('./router');
+var testRoutes = require('./routes/test');
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }))
-app.use('/test', test)
+
 //ROUTING
+app.use('/test', testRoutes)
 
 
 let server = app.listen(port, function () {
     let host = server.address().address
     let port = server.address().port
-    console.log("Ung dung Node.js dang hoat dong tai dia chi: http://%s:%s", host, port)
+    console.log("Server is running", host, port)
 });
 
 
