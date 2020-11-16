@@ -7,14 +7,17 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const app = express(); 
 const port = 8080; 
+require('dotenv').config();
 
-var testRoutes = require('./routes/test');
+const testRoutes = require('./routes/test');
+const userRoutes = require('./routes/user'); 
 
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: true }))
 
 //ROUTING
-app.use('/test', testRoutes)
+app.use('/test', testRoutes);
+app.use('/user', userRoutes);
 
 
 let server = app.listen(port, function () {
